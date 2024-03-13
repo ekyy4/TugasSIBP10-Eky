@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    
+    <title>Javascript Calculator</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI';
+        }
+
+        body{
+            overflow-x: hidden;
+            line-height: 1.5;
+            font-weight: 400;
+            font-size: .875rem;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="form.html">Form</a></li>
+            <li><a href="jsdasar.html">JS Dasar</a></li>
+            <div class="right">
+                <li><a id="switch" onclick="changeColor()">Switch</a></li>
+            </div>
+        </ul>
+    </nav>
+
+    <div class="calculator">
+        <input type="text" id="num1" placeholder="Angka pertama">
+        <select name="operator" id="operator">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">x</option>
+            <option value="/">/</option>
+        </select>
+        <input type="text" id="num2" placeholder="Angka kedua">
+        <button onclick="calculate()">Hitung</button>
+    </div>
+
+    
+</body>
+</html>

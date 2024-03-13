@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Registration</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI';
+        }
+
+        body{
+            overflow-x: hidden;
+            line-height: 1.5;
+            font-weight: 400;
+            font-size: .875rem;
+        }
+
+        .myButton {
+            border: none;
+            background-color: aliceblue;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .myButton:hover {
+            background-color: darkgray;
+        }
+
+    </style>
+</head>
+
+
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="form.html">Form</a></li>
+            <li><a href="jsdasar.html">JS Dasar</a></li>
+            <div class="right">
+                <li><a onclick="changeColor()">Switch</a></li>
+            </div>
+            
+            
+        </ul>
+    </nav>
+    <div class="container">
+        <section>
+            <form method="POST" action="" id="registrationForm">
+                <div>
+                    <label for="nama" class="l-form">Nama</label>
+                    <div>
+                        <input type="text" name="nama" id="nama" required>
+                    </div>
+                </div>
+    
+                <div>
+                    <label for="email">Email</label>
+                    <div>
+                        <input type="email" name="email" id="email" required>
+                    </div>
+                </div>
+    
+                <div>
+                    <label for="">Jenis Kelamin</label>
+                    <div>
+                        <input type="radio" id="laki-laki" name="gender" value="Laki-laki">
+                        <label for="laki-laki">Laki-laki</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="perempuan" name="gender" value="Perempuan">
+                        <label for="perempuan">Perempuan</label>
+                    </div>
+                </div>
+    
+                <div>
+                    <label for="prodi">Prodi</label>
+                    <div>
+                        <select name="prodi" id="prodi">
+                            <option value="">Pilih</option>
+                            <option value="TI">Teknik Informatika</option>
+                            <option value="SI">Sistem Informasi</option>
+                            <option value="DKV">Desain Komunikasi Visual</option>
+                        </select>
+                    </div>
+                </div>
+    
+                <div>
+                    <label for="">Hobi</label>
+                    <div>
+                        <input type="checkbox" id="hobi1" name="hobi" value="Membaca">
+                        <label for="hobi1">Membaca</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="hobi2" name="hobi" value="Menulis">
+                        <label for="hobi2">Menulis</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="hobi3" name="hobi" value="Menyanyi">
+                        <label for="hobi3">Menyanyi</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="hobi4" name="hobi" value="Olahraga">
+                        <label for="hobi4">Olahraga</label>
+                    </div>
+                </div>
+    
+                <div>
+                    <label for="alamat">Alamat</label>
+                    <div>
+                        <textarea name="alamat" id="alamat" cols="30" rows="3" placeholder="Alamat Lengkap"></textarea>
+                    </div>
+                </div>
+    
+                <div>
+                    <label for="myfile">Foto Diri</label>
+                    <div>
+                        <input type="file" id="myfile" name="myfile">
+                    </div>
+                </div>
+                <!--<div>
+                    <br><input type="submit" id="submit" value="Daftar" onclick="showUserData()">
+                </div>-->
+                <div>
+                    <br><button type="button" class="myButton" onclick="showUserData()">Tampilkan</button>
+                </div>
+                
+            </form>
+           
+        </section>
+    </div>
+
+    <div id="userDataContainer"></div>
+
+    <script>
+        function clearSelection() {
+            // Setiap radio button menjadi tidak terpilih dengan mengubah properti checked menjadi false
+            document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                radio.checked = false;
+            });
+        }
+
+        function showAlert() {
+            alert("Form telah disubmit!");
+            window.location.href = "form.html";
+        }
+
+        function showUserData() {
+            var nama = document.getElementById("nama").value;
+            var email = document.getElementById("email").value;
+            var gender = document.querySelector('input[name="gender"]:checked');
+            var prodi = document.getElementById("prodi").value;
+            var hobi = document.querySelectorAll('input[type="checkbox"]:checked');
+            var alamat = document.getElementById("alamat").value;
+            var file = document.getElementById("myfile").value;
+
+            var userDataContainer = document.getElementById("userDataContainer");
+            userDataContainer.innerHTML = "";
+
+            var userDataList = document.createElement("ul");
+
+            if (nama !== "") {
+                var namaItem = document.createElement("li");
+                namaItem.innerText = "Nama: " + nama;
+                userDataList.appendChild(namaItem);
+            }
+
+            if (email !== "") {
+                var emailItem = document.createElement("li");
+                emailItem.innerText = "Email: " + email;
+                userDataList.appendChild(emailItem);
+            }
+
+            if (gender) {
+                var genderItem = document.createElement("li");
+                genderItem.innerText = "Jenis Kelamin: " + gender.value;
+                userDataList.appendChild(genderItem);
+            }
+
+            if (prodi !== "") {
+                var prodiItem = document.createElement("li");
+                prodiItem.innerText = "Prodi: " + prodi;
+                userDataList.appendChild(prodiItem);
+            }
+
+            if (hobi.length > 0) {
+                var hobiItem = document.createElement("li");
+                var hobiText = "Hobi: ";
+                for (var i =0; i < hobi.length; i++){
+                    hobiText += " " + hobi[i].value;
+                    if (i < hobi.length - 1) {
+                        hobiText += ",";
+                    }
+                }
+                hobiItem.innerText = hobiText;
+                userDataList.appendChild(hobiItem);
+            }
+
+            if (alamat !== "") {
+                var alamatItem = document.createElement("li");
+                alamatItem.innerText = "Alamat: " + alamat;
+                userDataList.appendChild(alamatItem);
+            }
+
+            if (file !== "") {
+                var fileItem = document.createElement("li");
+                fileItem.innerText = "File: " + file;
+                userDataList.appendChild(fileItem);
+            }
+
+            userDataContainer.appendChild(userDataList);
+        }
+
+</script>
+    </script>
+</body>
+</html>
