@@ -36,6 +36,9 @@ ul .right li {
   float: left;
 }
 
+.navigation .prev .next {
+  border-radius: 3px;
+}
 
 section {
     position: relative;
