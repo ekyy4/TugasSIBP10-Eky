@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Registration</title>
 
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/Javascript/script.js"></script>
 
     <style>
         * {
@@ -14,11 +15,21 @@
             font-family: 'Segoe UI';
         }
 
-        body{
+        body {
             overflow-x: hidden;
             line-height: 1.5;
             font-weight: 400;
             font-size: .875rem;
+        }
+
+        section {
+            position: relative;
+            max-width: 400px;
+            background-color: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.5rem 0.5rem;
         }
 
         .myButton {
@@ -32,7 +43,6 @@
         .myButton:hover {
             background-color: darkgray;
         }
-
     </style>
 </head>
 
@@ -42,13 +52,14 @@
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="form.html">Form</a></li>
+            <li><a href="form.html">Register</a></li>
+            <li><a href="productapi.html">Product</a></li>
             <li><a href="jsdasar.html">JS Dasar</a></li>
             <div class="right">
-                <li><a onclick="changeColor()">Switch</a></li>
+                <li><a onclick="changeColor()">Theme</a></li>
             </div>
-            
-            
+
+
         </ul>
     </nav>
     <div class="container">
@@ -60,14 +71,14 @@
                         <input type="text" name="nama" id="nama" required>
                     </div>
                 </div>
-    
+
                 <div>
                     <label for="email">Email</label>
                     <div>
                         <input type="email" name="email" id="email" required>
                     </div>
                 </div>
-    
+
                 <div>
                     <label for="">Jenis Kelamin</label>
                     <div>
@@ -79,7 +90,7 @@
                         <label for="perempuan">Perempuan</label>
                     </div>
                 </div>
-    
+
                 <div>
                     <label for="prodi">Prodi</label>
                     <div>
@@ -91,7 +102,7 @@
                         </select>
                     </div>
                 </div>
-    
+
                 <div>
                     <label for="">Hobi</label>
                     <div>
@@ -111,14 +122,14 @@
                         <label for="hobi4">Olahraga</label>
                     </div>
                 </div>
-    
+
                 <div>
                     <label for="alamat">Alamat</label>
                     <div>
                         <textarea name="alamat" id="alamat" cols="30" rows="3" placeholder="Alamat Lengkap"></textarea>
                     </div>
                 </div>
-    
+
                 <div>
                     <label for="myfile">Foto Diri</label>
                     <div>
@@ -131,13 +142,13 @@
                 <div>
                     <br><button type="button" class="myButton" onclick="showUserData()">Tampilkan</button>
                 </div>
-                
+
             </form>
-           
+
         </section>
     </div>
 
-    <div id="userDataContainer"></div>
+    <!-- <div id="userDataContainer"></div> -->
 
     <script>
         function clearSelection() {
@@ -152,73 +163,74 @@
             window.location.href = "form.html";
         }
 
-        function showUserData() {
-            var nama = document.getElementById("nama").value;
-            var email = document.getElementById("email").value;
-            var gender = document.querySelector('input[name="gender"]:checked');
-            var prodi = document.getElementById("prodi").value;
-            var hobi = document.querySelectorAll('input[type="checkbox"]:checked');
-            var alamat = document.getElementById("alamat").value;
-            var file = document.getElementById("myfile").value;
+        // function showUserData() {
+        //     var nama = document.getElementById("nama").value;
+        //     var email = document.getElementById("email").value;
+        //     var gender = document.querySelector('input[name="gender"]:checked');
+        //     var prodi = document.getElementById("prodi").value;
+        //     var hobi = document.querySelectorAll('input[type="checkbox"]:checked');
+        //     var alamat = document.getElementById("alamat").value;
+        //     var file = document.getElementById("myfile").value;
 
-            var userDataContainer = document.getElementById("userDataContainer");
-            userDataContainer.innerHTML = "";
+        //     var userDataContainer = document.getElementById("userDataContainer");
+        //     userDataContainer.innerHTML = "";
 
-            var userDataList = document.createElement("ul");
+        //     var userDataList = document.createElement("ul");
 
-            if (nama !== "") {
-                var namaItem = document.createElement("li");
-                namaItem.innerText = "Nama: " + nama;
-                userDataList.appendChild(namaItem);
-            }
+        //     if (nama !== "") {
+        //         var namaItem = document.createElement("li");
+        //         namaItem.innerText = "Nama: " + nama;
+        //         userDataList.appendChild(namaItem);
+        //     }
 
-            if (email !== "") {
-                var emailItem = document.createElement("li");
-                emailItem.innerText = "Email: " + email;
-                userDataList.appendChild(emailItem);
-            }
+        //     if (email !== "") {
+        //         var emailItem = document.createElement("li");
+        //         emailItem.innerText = "Email: " + email;
+        //         userDataList.appendChild(emailItem);
+        //     }
 
-            if (gender) {
-                var genderItem = document.createElement("li");
-                genderItem.innerText = "Jenis Kelamin: " + gender.value;
-                userDataList.appendChild(genderItem);
-            }
+        //     if (gender) {
+        //         var genderItem = document.createElement("li");
+        //         genderItem.innerText = "Jenis Kelamin: " + gender.value;
+        //         userDataList.appendChild(genderItem);
+        //     }
 
-            if (prodi !== "") {
-                var prodiItem = document.createElement("li");
-                prodiItem.innerText = "Prodi: " + prodi;
-                userDataList.appendChild(prodiItem);
-            }
+        //     if (prodi !== "") {
+        //         var prodiItem = document.createElement("li");
+        //         prodiItem.innerText = "Prodi: " + prodi;
+        //         userDataList.appendChild(prodiItem);
+        //     }
 
-            if (hobi.length > 0) {
-                var hobiItem = document.createElement("li");
-                var hobiText = "Hobi: ";
-                for (var i =0; i < hobi.length; i++){
-                    hobiText += " " + hobi[i].value;
-                    if (i < hobi.length - 1) {
-                        hobiText += ",";
-                    }
-                }
-                hobiItem.innerText = hobiText;
-                userDataList.appendChild(hobiItem);
-            }
+        //     if (hobi.length > 0) {
+        //         var hobiItem = document.createElement("li");
+        //         var hobiText = "Hobi: ";
+        //         for (var i =0; i < hobi.length; i++){
+        //             hobiText += " " + hobi[i].value;
+        //             if (i < hobi.length - 1) {
+        //                 hobiText += ",";
+        //             }
+        //         }
+        //         hobiItem.innerText = hobiText;
+        //         userDataList.appendChild(hobiItem);
+        //     }
 
-            if (alamat !== "") {
-                var alamatItem = document.createElement("li");
-                alamatItem.innerText = "Alamat: " + alamat;
-                userDataList.appendChild(alamatItem);
-            }
+        //     if (alamat !== "") {
+        //         var alamatItem = document.createElement("li");
+        //         alamatItem.innerText = "Alamat: " + alamat;
+        //         userDataList.appendChild(alamatItem);
+        //     }
 
-            if (file !== "") {
-                var fileItem = document.createElement("li");
-                fileItem.innerText = "File: " + file;
-                userDataList.appendChild(fileItem);
-            }
+        //     if (file !== "") {
+        //         var fileItem = document.createElement("li");
+        //         fileItem.innerText = "File: " + file;
+        //         userDataList.appendChild(fileItem);
+        //     }
 
-            userDataContainer.appendChild(userDataList);
-        }
+        //     userDataContainer.appendChild(userDataList);
+        // }
 
-</script>
+    </script>
     </script>
 </body>
+
 </html>

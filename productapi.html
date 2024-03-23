@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product</title>
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/Javascript/script.js"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI';
+    }
+
+    body {
+      overflow-x: hidden;
+      line-height: 1.5;
+      font-weight: 400;
+      font-size: .875rem;
+    }
+
+    section {
+      position: relative;
+      max-width: 100%;
+      background-color: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0.5rem 0.5rem;
+      border: 1px;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="form.html">Register</a></li>
+      <li><a href="productapi.html">Product</a></li>
+      <li><a href="jsdasar.html" onclick="greet()">JS Dasar</a></li>
+      <div class="right">
+        <li><a id="switch" onclick="changeColor()">Theme</a></li>
+      </div>
+    </ul>
+  </nav>
+
+  <section class="produk">
+    <table>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Nim</th>
+          <th>Nama</th>
+          <th>Fakultas</th>
+          <th>Prodi</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <!-- <button type="submit" value="submit" onclick="loadData()">tampil</button> -->
+
+
+  <script>
+    function loadData() {
+      let endpoint = `https://crudcrud.com/api/221d30a3bab34a14ad98dedf591ea45b/users`;
+
+      fetch(endpoint)
+        .then((response) => response.json())
+        .then((apiData) => {
+          let output = ' '
+          let no = 1;
+          apiData.forEach(element => {
+            output += `
+                <tr>
+                    <td>` + (no++) + `</td>
+                    <td>${element.nim}</td>
+                    <td>${element.nama}</td>
+                    <td>${element.fakultas}</td>
+                    <td>${element.prodi}</td>
+                </tr>
+                `
+            //console.log(element)
+          });
+          document.querySelector('tbody').innerHTML = output
+
+
+        });
+    }
+    loadData();
+  </script>
+</body>
+
+</html>

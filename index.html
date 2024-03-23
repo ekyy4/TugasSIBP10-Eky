@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="assets/css/style.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="script.js"></script>
+  <script src="assets/Javascript/script.js"></script>
   <title>Landing Page</title>
   <style>
     * {
@@ -25,77 +25,7 @@
       position: relative;
     }
 
-    .slides .slide {
-      display: none;
-      margin-top: 50px;
-      text-align: center;
-    }
-
-    .slides .slide img{
-      width: 80%;
-      border: 2px ;
-      border-radius: 15px;
-      animation-name: fade;
-      animation-duration: 1.5s;
-    }
-
-    .slides .navigation {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: flex;
-      justify-content: space-between;
-      width: 80%;
-    }
-
-    .slides .navigation .prev, .slides .navigation .next {
-      cursor: pointer;
-      padding: 16px;
-      font-weight: bold;
-      font-size: 20px;
-      color: aliceblue;
-      background: rgba(0, 0, 0, 0.2);
-      user-select: none;
-      transition: 0.6s ease;
-    }
-
-    .slides .navigation .prev:hover, .slides .navigation .next:hover {
-      background: rgba(0, 0, 0, 1);
-    }
-
-    @keyframes fade {
-      from{opacity: 0.3}
-      to {opacity: 1}
-    }
-
-    @media (max-width: 500px){
-      .slides .navigation .prev, .slides .navigation .next{
-        font-size: 18px;
-        padding: 13px;
-      }
-    }
-
-    @media (max-width: 500px){
-      .slides .navigation .prev, .slides .navigation .next{
-        font-size: 15px;
-        padding: 10px;
-      }
-    }
-      
-    @media (max-width: 500x){
-      .slides .navigation .prev, .slides .navigation .next{
-        font-size: 12px;
-        padding: 7px;
-      }
-    }
-      
-    @media (max-width: 360px){
-      .slides .navigation .prev, .slides .navigation .next{
-        font-size: 11px;
-        padding: 6px;
-      }
-    }
+    
   </style>
   
 </head>
@@ -103,23 +33,24 @@
   <nav>
     <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="form.html">Form</a></li>
+        <li><a href="form.html">Register</a></li>
+        <li><a href="productapi.html">Product</a></li>
         <li><a href="jsdasar.html" onclick="greet()">JS Dasar</a></li>
         <div class="right">
-          <li><a id="switch" onclick="changeColor()">Switch</a></li>
+          <li><a id="switch" onclick="changeColor()">Theme</a></li>
         </div>
     </ul>
   </nav>
 
   <div class="slides">
     <div class="slide">
-      <img src="img/car.jpg" alt="">
+      <img src="assets/img/car.jpg" alt="">
     </div>
     <div class="slide">
-      <img src="img/tokyo.jpg" alt="">
+      <img src="assets/img/tokyo.jpg" alt="">
     </div>
     <div class="slide">
-      <img src="img/wave.jpg" alt="">
+      <img src="assets/img/wave.jpg" alt="">
     </div>
     <div class="navigation">
       <a class="prev" onclick="plusSlides(-1)">&#10094</a>
@@ -152,6 +83,7 @@
         }
         slides[slideIndex-1].style.display = "block";
       }
+      
   </script>
   
 </body>
