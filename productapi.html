@@ -23,14 +23,8 @@
     }
 
     section {
-      position: relative;
-      max-width: 100%;
-      background-color: transparent;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 0.5rem 0.5rem;
-      border: 1px;
+      flex-direction: column;
     }
   </style>
 </head>
@@ -47,29 +41,77 @@
       </div>
     </ul>
   </nav>
+  <section>
+    <div>
+      <form id="product" action="" method="POST">
+        <div>
+          <label for="">Nama</label><br>
+          <input type="text" id="nama" name="nama">
+        </div>
 
-  <section class="produk">
-    <table>
-      <thead>
-        <tr>
-          <th>No</th>
-          <th>Nim</th>
-          <th>Nama</th>
-          <th>Fakultas</th>
-          <th>Prodi</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+        <div>
+          <label for="">Deskripsi</label><br>
+          <input type="text" id="deskripsi" name="deskripsi">
+        </div>
+
+        <div>
+          <label for="">Foto</label><br>
+          <input type="text" id="fotoUrl" name="foto">
+        </div>
+        <div>
+          <button type="submit">Simpan</button>
+        </div>
+      </form>
+    </div>
+
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Nama</th>
+            <th>Deskripsi</th>
+            <th>Foto</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
   </section>
 
   <!-- <button type="submit" value="submit" onclick="loadData()">tampil</button> -->
 
 
   <script>
-    function loadData() {
-      let endpoint = `https://crudcrud.com/api/221d30a3bab34a14ad98dedf591ea45b/users`;
+    let form = document.getElementById('product');
+    let endpoint = `https://crudcrud.com/api/4b615565251e4900b282c9bccabbe86e/users`;
 
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      let formData = new FormData(form);
+      let requestData = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(Object.fromEntries(formData)),
+      };
+
+      try {
+        let response = await fetch(endpoint, requestData);
+        let data = await response.json();
+        console.log('Data ditambahkan', data);
+        alert('Data berhasil ditambahkan!');
+        form.reset();
+      } catch (error) {
+        console.error('error: ', error);
+      }
+    });
+
+
+    function loadData() {
       fetch(endpoint)
         .then((response) => response.json())
         .then((apiData) => {
@@ -79,10 +121,9 @@
             output += `
                 <tr>
                     <td>` + (no++) + `</td>
-                    <td>${element.nim}</td>
                     <td>${element.nama}</td>
-                    <td>${element.fakultas}</td>
-                    <td>${element.prodi}</td>
+                    <td>${element.deskripsi}</td>
+                    <td><img src="${element.foto}" alt="Foto" style="max-width: 100px;"></td>
                 </tr>
                 `
             //console.log(element)

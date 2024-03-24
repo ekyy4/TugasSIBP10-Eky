@@ -202,3 +202,7 @@ button {
   padding: 5px;
   margin: 5px;
 }
+
+form input {
+  border: 1px solid;
+}

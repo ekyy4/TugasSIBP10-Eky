@@ -71,28 +71,56 @@ function calculate() {
 // Contoh mengganti API dengan URL endpoint yang baru
 //apiUrl = "https://api.newexample.com/data";
 
-function loadData(){
-    let endpoint = `https://crudcrud.com/api/221d30a3bab34a14ad98dedf591ea45b/users`;
+// function loadData(){
+//     let endpoint = `https://crudcrud.com/api/221d30a3bab34a14ad98dedf591ea45b/users`;
 
-    fetch(endpoint)
-        .then((response) => response.json())
-        .then((apiData) => {
-            let output = ' ';
-            let no = 1;
-            apiData.forEach(element => {
-                output += `
-                <tr>
-                    <td>` + (no++) + `</td>
-                    <td>${element.nim}</td>
-                    <td>${element.nama}</td>
-                    <td>${element.fakultas}</td>
-                    <td>${element.prodi}</td>
-                </tr>
-                `
-                //console.log(element)
-            });
-            document.querySelector('tbody').innerHTML = output
+//     fetch(endpoint)
+//         .then((response) => response.json())
+//         .then((apiData) => {
+//             let output = ' ';
+//             let no = 1;
+//             apiData.forEach(element => {
+//                 output += `
+//                 <tr>
+//                     <td>` + (no++) + `</td>
+//                     <td>${element.nim}</td>
+//                     <td>${element.nama}</td>
+//                     <td>${element.fakultas}</td>
+//                     <td>${element.prodi}</td>
+//                 </tr>
+//                 `
+//                 //console.log(element)
+//             });
+//             document.querySelector('tbody').innerHTML = output
 
             
-        });
-}
+//         });
+// }
+// loadData();
+
+
+// const form = document.getElementById('product');
+// let endpoint = `https://crudcrud.com/api/221d30a3bab34a14ad98dedf591ea45b/users`;
+
+// form.addEventListener('submit', async (e) => {
+//   e.preventDefault();
+
+//   const formData = new FormData(form);
+//   const requestData = {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify(Object.fromEntries(formData)),
+//   };
+
+//   try {
+//     let response = await fetch(endpoint, requestData);
+//     let data = await response.json();
+//     console.log('Data ditambahkan', data);
+//     alert('Data berhasil ditambahkan!');
+//     form.reset();
+//   } catch (error) {
+//     console.error('error: ', error);
+//   }
+// });
