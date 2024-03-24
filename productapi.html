@@ -30,10 +30,20 @@
 </head>
 
 <body>
+  <header>
+    <div class="home-links">
+      <a href="index.html"><img src="../assets/img/home-icon.png" alt=""></a>
+    </div>
+    <div class="header-links">
+      <a href="login-responsive.html">Login</a>
+      <a href="form.html">Register</a>
+      
+    </div>
+    
+    
+  </header>
   <nav>
     <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="form.html">Register</a></li>
       <li><a href="productapi.html">Data</a></li>
       <li><a href="jsdasar.html" onclick="greet()">JS Dasar</a></li>
       <div class="right">
@@ -85,7 +95,7 @@
 
   <script>
     let form = document.getElementById('product');
-    let endpoint = `https://crudcrud.com/api/4b615565251e4900b282c9bccabbe86e/users`;
+    let endpoint = `https://crudcrud.com/api/7120ecc083ec4031be3c8fce0763e9a8/users`;
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();

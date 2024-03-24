@@ -1,44 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="assets/css/style.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="assets/Javascript/script.js"></script>
-  <title>Landing Page</title>
+  <title>Dasboard</title>
   <style>
     * {
       box-sizing: border-box;
       font-family: 'Segoe UI';
     }
 
-    body{
+    body {
       overflow-x: hidden;
       line-height: 1.5;
       font-weight: 400;
       font-size: .875rem;
     }
 
-    .slides{
+    .slides {
       width: 100%;
       position: relative;
     }
-
-    
   </style>
-  
+
 </head>
+
 <body>
+  <header>
+    <div class="home-links">
+      <a href="index.html"><img src="../assets/img/home-icon.png" alt=""></a>
+    </div>
+    <div class="header-links">
+      <a href="login-responsive.html">Login</a>
+      <a href="form.html">Register</a>
+      
+    </div>
+    
+    
+  </header>
   <nav>
     <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="form.html">Register</a></li>
-        <li><a href="productapi.html">Data</a></li>
-        <li><a href="jsdasar.html" onclick="greet()">JS Dasar</a></li>
-        <div class="right">
-          <li><a id="switch" onclick="changeColor()">Theme</a></li>
-        </div>
+      <!-- <li><img src="../assets/img/menu.png" alt=""></li> -->
+      <li><a href="productapi.html">Data</a></li>
+      <li><a href="jsdasar.html" onclick="greet()">JS Dasar</a></li>
+      <div class="right">
+        <li><a id="switch" onclick="changeColor()">Theme</a></li>
+      </div>
     </ul>
   </nav>
 
@@ -60,31 +71,29 @@
 
   <script>
     var slideIndex = 1;
-      showSlides(slideIndex);
+    showSlides(slideIndex);
 
     function plusSlides(n) {
       showSlides(slideIndex += n);
     }
 
     function showSlides(n) {
-        var i;
-        var slides = document.getElementsByClassName("slide");
-        if (n > slides.length)
-        {
-          slideIndex = 1;
-        }
-        if (n < 1)
-        {
-          slideIndex = slides.length
-        }
-        for (i = 0; i < slides.length; i++)
-        {
-          slides[i].style.display = "none";
-        }
-        slides[slideIndex-1].style.display = "block";
+      var i;
+      var slides = document.getElementsByClassName("slide");
+      if (n > slides.length) {
+        slideIndex = 1;
       }
-      
+      if (n < 1) {
+        slideIndex = slides.length
+      }
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slides[slideIndex - 1].style.display = "block";
+    }
+
   </script>
-  
+
 </body>
+
 </html>
