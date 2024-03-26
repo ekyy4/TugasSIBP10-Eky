@@ -25,6 +25,8 @@
     section {
       display: flex;
       flex-direction: column;
+      width: 100%;
+      justify-content: center;
     }
   </style>
 </head>
@@ -37,25 +39,36 @@
     <div class="header-links">
       <a href="login-responsive.html">Login</a>
       <a href="form.html">Register</a>
-      
+
     </div>
-    
-    
+
+
   </header>
   <nav>
     <ul>
-      <li><a href="productapi.html">Data</a></li>
+      <li><a href="productapi.html">Produk</a></li>
       <li><a href="jsdasar.html" onclick="greet()">JS Dasar</a></li>
-      <div class="right">
+      <!-- <div class="right">
         <li><a id="switch" onclick="changeColor()">Theme</a></li>
-      </div>
+      </div> -->
+    </ul>
+    <ul class="nav-dropdown">
+      <li><a href="productapi.html">Produk</a></li>
+      <li><a href="jsdasar.html" onclick="greet()">JS Dasar</a></li>
+      <!-- <div class="right">
+          <li><a id="switch" onclick="changeColor()">Theme</a></li>
+      </div> -->
     </ul>
   </nav>
   <section>
-    <div>
+    <div class="container-inputProduk">
       <form id="product" action="" method="POST">
         <div>
-          <label for="">Nama</label><br>
+          <label for="">ID</label><br>
+          <input type="text" id="id" name="id">
+        </div>
+        <div>
+          <label for="">Produk</label><br>
           <input type="text" id="nama" name="nama">
         </div>
 
@@ -69,22 +82,24 @@
           <input type="text" id="fotoUrl" name="foto">
         </div>
         <div>
-          <button type="submit">Simpan</button>
+          <button type="submit" id="produk-btn">Simpan</button>
         </div>
       </form>
     </div>
 
-    <div>
-      <table>
+    <div class="tampil-produk">
+      <table id="produkTable">
         <thead>
           <tr>
             <th>No</th>
+            <th>ID</th>
             <th>Nama</th>
             <th>Deskripsi</th>
             <th>Foto</th>
+            <th>Aksi</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody id="produkTbody"></tbody>
       </table>
     </div>
 
@@ -95,7 +110,7 @@
 
   <script>
     let form = document.getElementById('product');
-    let endpoint = `https://crudcrud.com/api/7120ecc083ec4031be3c8fce0763e9a8/users`;
+    let endpoint = 'https://crudcrud.com/api/0242ccd258654fd586508e9905d0812b/users';
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -131,19 +146,39 @@
             output += `
                 <tr>
                     <td>` + (no++) + `</td>
+                    <td>${element.id}</td>
                     <td>${element.nama}</td>
                     <td>${element.deskripsi}</td>
                     <td><img src="${element.foto}" alt="Foto" style="max-width: 100px;"></td>
+                    <td><button onclick="deleteData('${element.id}')">-</button></td>
+
                 </tr>
                 `
             //console.log(element)
           });
-          document.querySelector('tbody').innerHTML = output
-
-
+          document.getElementById('produkTbody').innerHTML = output;
         });
     }
     loadData();
+
+    async function deleteData(id) {
+      try {
+        let response = await fetch(`${endpoint}/${id}`, {
+          method: 'DELETE',
+        });
+        if (response.ok) {
+          alert('Data berhasil dihapus');
+          loadData();
+        } else {
+          throw new Error('Gagal menghapus data');
+        }
+      } catch (error) {
+        console.error('Error:', error.message);
+        alert('Terjadi kesalahan saat menghapus data');
+      }
+    }
+
+
   </script>
 </body>
 

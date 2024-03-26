@@ -44,4 +44,4 @@ function calculate() {
   alert("Hasil: " + result);
 }
 
-
+// Toogle dropdown

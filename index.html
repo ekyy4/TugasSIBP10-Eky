@@ -20,11 +20,6 @@
       font-weight: 400;
       font-size: .875rem;
     }
-
-    .slides {
-      width: 100%;
-      position: relative;
-    }
   </style>
 
 </head>
@@ -37,19 +32,24 @@
     <div class="header-links">
       <a href="login-responsive.html">Login</a>
       <a href="form.html">Register</a>
-      
+
     </div>
-    
-    
   </header>
   <nav>
     <ul>
       <!-- <li><img src="../assets/img/menu.png" alt=""></li> -->
-      <li><a href="productapi.html">Data</a></li>
+      <li><a href="productapi.html">Produk</a></li>
       <li><a href="jsdasar.html" onclick="greet()">JS Dasar</a></li>
-      <div class="right">
+      <!-- <div class="right">
         <li><a id="switch" onclick="changeColor()">Theme</a></li>
-      </div>
+      </div> -->
+    </ul>
+    <ul class="nav-dropdown">
+      <li><a href="productapi.html">Produk</a></li>
+      <li><a href="jsdasar.html" onclick="greet()">JS Dasar</a></li>
+      <!-- <div class="right">
+        <li><a id="switch" onclick="changeColor()">Theme</a></li>
+      </div> -->
     </ul>
   </nav>
 
@@ -65,7 +65,7 @@
     </div>
     <div class="navigation">
       <a class="prev" onclick="plusSlides(-1)">&#10094</a>
-      <a class="next" onclick="plusSlides(-1)">&#10095</a>
+      <a class="next" onclick="plusSlides(1)">&#10095</a>
     </div>
   </div>
 
@@ -90,8 +90,16 @@
         slides[i].style.display = "none";
       }
       slides[slideIndex - 1].style.display = "block";
+      // slides.forEach(slide => {
+      //   slide.style.display = 'none';
+      // });
+      // slides[slideIndex - 1].style.display = 'block';
     }
 
+    function toggleDropdown() {
+      const dropdown = document.querySelector('.nav-dropdown');
+      dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
+    }
   </script>
 
 </body>
