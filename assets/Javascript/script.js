@@ -44,4 +44,15 @@ function calculate() {
   alert("Hasil: " + result);
 }
 
-// Toogle dropdown
+document.addEventListener("DOMContentLoaded", function () {
+  let form = document.querySelector(".login-form");
+  let registerBtn = document.getElementById("register-btn");
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+  });
+
+  registerBtn.addEventListener("click", function () {
+    window.location.href = "form.html";
+  });
+});
