@@ -6,8 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Product</title>
 
-  <link rel="stylesheet" href="assets/css/style.css">
-  <script src="assets/Javascript/script.js"></script>
+  <link rel="stylesheet" href="assets/dist/css/style.css">
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/album/">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/dist/css/album.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
   <style>
     * {
@@ -28,13 +35,17 @@
       width: 100%;
       justify-content: center;
     }
+
+    .card {
+      border-radius: 5px;
+    }
   </style>
 </head>
 
 <body>
   <header>
     <div class="home-links">
-      <a href="index.html"><img src="assets/img/home-icon.png" alt=""></a>
+      <a href="index.html"><a href="index.html"><i class="bi bi-house-fill"><strong>Panorama</strong></i></a>
     </div>
     <div class="header-links">
       <a href="login-responsive.html">Login</a>
@@ -64,22 +75,22 @@
     <div class="container-inputProduk">
       <form id="product" action="" method="POST">
         <div>
-          <label for="">ID</label><br>
+          <label for="">Nama</label><br>
           <input type="text" id="id" name="id">
         </div>
         <div>
-          <label for="">Produk</label><br>
+          <label for="">Deskripsi Singkat</label><br>
           <input type="text" id="nama" name="nama">
         </div>
 
         <div>
           <label for="">Deskripsi</label><br>
-          <input type="text" id="deskripsi" name="deskripsi">
+          <textarea name="" id="" cols="30" rows="10"></textarea>
         </div>
 
         <div>
           <label for="">Foto</label><br>
-          <input type="text" id="fotoUrl" name="foto">
+          <input type="file" id="fotoUrl" name="foto">
         </div>
         <div>
           <button type="submit" id="produk-btn">Simpan</button>
@@ -87,21 +98,14 @@
       </form>
     </div>
 
-    <div class="tampil-produk">
+    <!-- <div class="tampil-produk">
       <table id="produkTable">
         <thead>
-          <tr>
-            <th>No</th>
-            <th>ID</th>
-            <th>Nama</th>
-            <th>Deskripsi</th>
-            <th>Foto</th>
-            <th>Aksi</th>
-          </tr>
+
         </thead>
         <tbody id="produkTbody"></tbody>
       </table>
-    </div>
+    </div> -->
 
   </section>
 
@@ -109,77 +113,91 @@
 
 
   <script>
-    let form = document.getElementById('product');
-    let endpoint = 'https://crudcrud.com/api/aa35cc137f184fda8afaad930195bff2/users';
+    // let form = document.getElementById("product");
+    // let endpoint =
+    //   'https://crudcrud.com/api/af6aa471722f4207a5d7c97ea27cb030/users';
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+    // form.addEventListener("submit", async (e) => {
+    //   e.preventDefault();
 
-      let formData = new FormData(form);
-      let requestData = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(Object.fromEntries(formData)),
-      };
+    //   let formData = new FormData(form);
+    //   let requestData = {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(Object.fromEntries(formData)),
+    //   };
 
-      try {
-        let response = await fetch(endpoint, requestData);
-        let data = await response.json();
-        console.log('Data ditambahkan', data);
-        alert('Data berhasil ditambahkan!');
-        form.reset();
-      } catch (error) {
-        console.error('error: ', error);
-      }
-    });
+    //   try {
+    //     let response = await fetch(endpoint, requestData);
+    //     let data = await response.json();
+    //     console.log("Data ditambahkan", data);
+    //     alert("Data berhasil ditambahkan!");
+    //     form.reset();
+    //   } catch (error) {
+    //     console.error("error: ", error);
+    //   }
+    // });
+
+    // function loadData() {
+    //   fetch(endpoint)
+    //     .then((response) => response.json())
+    //     .then((apiData) => {
+    //       let output = " ";
+    //       let no = 1;
+    //       apiData.forEach((element) => {
+    //         output +=
+    //           `
+    //       <div class="card">
+    //       <img src="${element.foto}" alt="Foto" style="max-width: 100%;">
+    //       <div class="card-body">
+    //         <h5>${element.nama}</h5>
+    //         <p>${element.deskripsi}</p>
+    //         <button onclick="deleteData('${element.id}')">Delete</button>
+    //       </div>
+    //     </div>
+    //         `;
+    //         //console.log(element)
+    //       });
+    //       document.getElementById("produkTbody").innerHTML = output;
+    //     });
+    // }
+    // loadData();
+
+    // async function deleteData(id) {
+    //   try {
+    //     let response = await fetch(`${endpoint}/${id}`, {
+    //       method: "DELETE",
+    //     });
+    //     if (response.ok) {
+    //       alert("Data berhasil dihapus");
+    //       loadData();
+    //     } else {
+    //       throw new Error("Gagal menghapus data");
+    //     }
+    //   } catch (error) {
+    //     console.error("Error:", error.message);
+    //     alert("Terjadi kesalahan saat menghapus data");
+    //   }
+    // }
 
 
     function loadData() {
       fetch(endpoint)
         .then((response) => response.json())
-        .then((apiData) => {
-          let output = ' '
-          let no = 1;
-          apiData.forEach(element => {
-            output += `
-                <tr>
-                    <td>` + (no++) + `</td>
-                    <td>${element.id}</td>
-                    <td>${element.nama}</td>
-                    <td>${element.deskripsi}</td>
-                    <td><img src="${element.foto}" alt="Foto" style="max-width: 100px;"></td>
-                    <td><button onclick="deleteData('${element.id}')">-</button></td>
+        .then((res) => {
 
-                </tr>
-                `
-            //console.log(element)
-          });
-          document.getElementById('produkTbody').innerHTML = output;
+          let datas = res.data
+          
+          console.log(res);
+          console.log(datas);
         });
+
+
     }
-    loadData();
-
-    async function deleteData(id) {
-      try {
-        let response = await fetch(`${endpoint}/${id}`, {
-          method: 'DELETE',
-        });
-        if (response.ok) {
-          alert('Data berhasil dihapus');
-          loadData();
-        } else {
-          throw new Error('Gagal menghapus data');
-        }
-      } catch (error) {
-        console.error('Error:', error.message);
-        alert('Terjadi kesalahan saat menghapus data');
-      }
-    }
-
-
   </script>
+  <script src="assets/dist/js/script.js"></script>
 </body>
 
 </html>

@@ -10,24 +10,28 @@ header {
 
 .home-links {
   order: 1;
-  margin-left: 50px;
+  margin-left: 100px;
   margin-top: 10px;
 }
 
 .home-links a{
   text-decoration: none;
-  font-weight: 600;
   font-size: 35px;
   color: black;
+  font-size: 24px;
 }
 
-.home-links img {
+.home-links a:hover {
+  color: #373738;
+}
+
+/* .home-links img {
   width: 40px;
 }
 
 .home-links img:hover {
   cursor: pointer;
-}
+} */
 
 .header-links {
   width: 20%;
@@ -56,7 +60,7 @@ header {
 @media screen and (max-width: 768px) {
   .home-links {
     order: 1;
-    margin-left: auto;
+    margin-left: 20px;
   }
 
   .header-links {
@@ -65,7 +69,11 @@ header {
   }
 
   .header-links a {
-    margin-left: 0;
+    margin-left: 10px;
+  }
+
+  .home-links a {
+    margin-right: 20px;
   }
 }
 
@@ -103,8 +111,12 @@ nav ul li a {
   text-decoration: none;
   padding: 10px;
   transition: color 0.3s ease;
+  font-size: 16px;
 }
 
+li a:hover {
+  color: #fff;
+}
 .nav-dropdown {
   display: none;
   flex-direction: column;
@@ -124,76 +136,18 @@ nav ul li a {
   .nav-dropdown {
     display: block;
     position: static;
+    margin-left: 30px;
   }
 
-  .nav-dropdown li {
-    border-top: 1px solid #fff;
-    /* Tambahkan garis pemisah */
-  }
+  
 }
 
-/* li {
-  float: left;
-}
-
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  border-radius: 4px;
-  padding: 10px 12px;
-  margin: 6px 8px;
-  text-decoration: none;
-}*/
 
 li a:hover {
   /* background-color: #008170; */
   text-decoration-line: underline;
 }
 
-/* .logo {
-  font-size: 24px;
-  font-weight: bold;
-  color: #fff;
-  text-decoration: none;
-}
-
-.logo:hover {
-  color: #ffcc00;
-}
-
-.menu-button a{
-  color: #fff;
-  text-decoration: none;
-  font-size: 18px;
-  padding: 10px;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-
-.menu-button a:hover {
-  color: #ffcc00;
-} */
-
-/*
-li img {
-  width: 40px;
-  height: auto;
-}
-
-li img:hover {
-  background-color: #008170;
-  cursor: pointer;
-}
-
-
-ul .right li {
-  float: right;
-  margin-left: auto;
-  margin-right: 8px;
-  padding-right: 26px;
-  cursor: pointer;
-} */
 
 /*================================================Navbar============================================*/
 
@@ -258,6 +212,10 @@ ul .right li {
   border-radius: 3px;
 }
 
+.navigation a {
+  text-decoration: none;
+}
+
 @keyframes fade {
   from {
     opacity: 0.3
@@ -308,6 +266,35 @@ ul .right li {
   }
 }
 
+#back-to-top {
+  position: fixed;
+  right: 28px;
+  bottom: 100px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #fff;
+  color: black;
+  font-size: 22px;
+  transition: all 0.3s linear;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#back-to-top.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#back-to-top:hover {
+  background-color: darkslategrey;
+  color: #fff;
+}
+
 /*================================================Index============================================*/
 .column {
   float: left;
@@ -324,13 +311,10 @@ ul .right li {
   max-width: 500px;
   padding: 20px;
   border-radius: 8px;
+  border: 1px solid #555555;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
-  /* grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  margin: 0 auto;
-  max-width: 960px;
-  place-items: center; */
+  margin-bottom: 200px;
 }
 
 .register-form {
@@ -472,13 +456,22 @@ section table tbody td {
 }
 
 #produk-btn {
-  padding: 5px;
-  margin: 5px;
+  background-color: #016cf8;
+  padding: 8px;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+#produk-btn:hover {
+  background-color: #014eb3;
 }
 
 form input {
   border: 1px solid;
 }
+
 
 /*==============================================Productapi===========================================*/
 
@@ -489,8 +482,9 @@ form input {
   max-width: 400px;
   padding: 20px;
   border-radius: 8px;
+  border: 1px solid #555555;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 200px;
+  margin-bottom: 500px;
 }
 
 .login-form {
@@ -500,11 +494,13 @@ form input {
 
 .login-form h2 {
   margin: 0;
+  font-family: serif;
   text-align: center;
+  color:#373738 ;
 }
 
 #login-btn {
-  background-color: #09b94c;
+  background-color: #018a35;
   padding: 8px;
   color: #fff;
   cursor: pointer;
@@ -513,7 +509,7 @@ form input {
 }
 
 #login-btn:hover {
-  background-color: #058a38;
+  background-color: #005e24;
 }
 
 #register-btn {
